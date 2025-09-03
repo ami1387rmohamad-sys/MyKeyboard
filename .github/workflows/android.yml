@@ -3,7 +3,7 @@ name: Android CI
 on:
   push:
     branches:
-      - main   # هر بار که روی main پوش کنی، بیلد میشه
+      - main   # اگر شاخه‌ات master هست اینجا بذار master
 
 jobs:
   build:
@@ -18,6 +18,9 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
+
+      - name: Give gradlew permission
+        run: chmod +x gradlew
 
       - name: Build with Gradle
         run: ./gradlew assembleDebug
